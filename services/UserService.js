@@ -5,6 +5,11 @@ const getAll = async () => {
 
     return users;
 };
+
+const getById = async (id) => {
+  const user = await User.findByPk(id);
+  return user;
+};
   
 const ServiceCreate = async (user) => {
   const validated = await User.findOne({ where: { email: user.email } });
@@ -20,4 +25,5 @@ const ServiceCreate = async (user) => {
 module.exports = { 
   ServiceCreate,
   getAll,
+  getById,
 };
