@@ -35,6 +35,7 @@ module.exports = (sequelize) => {
   const BlogPost = sequelize.define('BlogPost',
     Attributes,
     {
+      timestamps: false,
       undescored: true,
       tableName: 'BlogPosts',
     });

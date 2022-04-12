@@ -21,7 +21,8 @@ module.exports = {
     },
     userId: {
        type: Sequelize.INTEGER, 
-       foreignKey: true,
+       allowNull: false,
+       references: { model: 'User',foreignKey: 'id'},
     },
     published: {
       type: Sequelize.DATE,
