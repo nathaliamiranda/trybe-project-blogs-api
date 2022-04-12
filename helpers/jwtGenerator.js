@@ -8,6 +8,6 @@ const jwtConfig = {
 const SECRET = process.env.JWT_SECRET;
 
 module.exports = {
-   singJwt: (payload = {}) => jwt.sign({ data: payload }, SECRET, jwtConfig),
-   
+   singJwt: (payload) => jwt.sign({ data: payload }, SECRET, jwtConfig),
+   verifyJwt: (payload) => jwt.verify(payload, SECRET),
 };

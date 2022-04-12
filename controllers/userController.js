@@ -1,5 +1,11 @@
 const userServiceCreate = require('../services/UserService');
 
+const getAllController = async (_req, res) => {
+  const result = await userServiceCreate.getAll();
+
+  return res.status(200).json(result);
+};
+
 const createController = async (req, res, next) => {
   try {
     const user = await userServiceCreate.ServiceCreate(req.body);
@@ -14,4 +20,5 @@ const createController = async (req, res, next) => {
 
 module.exports = {
   createController,
+  getAllController,
 };
