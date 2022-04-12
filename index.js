@@ -5,12 +5,14 @@ const express = require('express');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 
 const user = require('./routes/users');
+const login = require('./routes/login');
 
 const app = express();
 
 app.use(express.json());
 
 app.use('/user', user);
+app.use('/login', login);
 
 // daqui pra baixo as rotas estarão autenticadas
 // app.use(authMiddleware); 
