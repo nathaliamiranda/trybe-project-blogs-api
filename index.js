@@ -2,11 +2,15 @@ require('dotenv').config();
 
 const express = require('express');
 
-const { errorMiddleware } = require('./middlewares');
+const errorMiddleware = require('./middlewares/errorMiddleware');
+
+const user = require('./routes/users');
 
 const app = express();
 
 app.use(express.json());
+
+app.use('/user', user);
 
 // daqui pra baixo as rotas estarão autenticadas
 // app.use(authMiddleware); 
