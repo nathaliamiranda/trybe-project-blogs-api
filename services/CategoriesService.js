@@ -2,7 +2,7 @@ const { Category } = require('../models');
 
 const getAll = async () => {
     const categories = await Category.findAll();
-    return categories.sort((a, b) => a.id - b.id);
+    return categories;
 };
 
 const createCategory = async (name) => {
