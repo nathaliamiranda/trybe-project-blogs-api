@@ -9,5 +9,6 @@ const isValidPost = require('../middlewares/blogpostMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
 
 router.post('/', isValidPost, authMiddleware, BlogPostController.createPostController);
+router.get('/', authMiddleware, BlogPostController.getAllController);
 
 module.exports = router;

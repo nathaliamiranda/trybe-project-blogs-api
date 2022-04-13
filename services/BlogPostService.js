@@ -1,4 +1,23 @@
-const { BlogPost, Category } = require('../models');
+const { BlogPost, Category, User } = require('../models');
+
+const getALlPosts = async () => {
+    const posts = await BlogPost.findAll(
+      { include: [
+        { 
+          model: User, 
+          as: 'user',
+          attribute: { exclude: ['password'] },
+        },
+        { 
+          model: Category, 
+          as: 'categories',
+          through: { attributes: [] },
+        },
+      ],
+       },
+);
+    return posts;
+};
 
 const createPost = async ({ title, content, categoryIds }, userId) => {
 const result = categoryIds.map(async (id) => Category.findOne({ where: { id } }));
@@ -15,4 +34,5 @@ if (!existCategory) return { message: '"categoryIds" not found' };
 
 module.exports = {
     createPost,
+    getALlPosts,
 };
