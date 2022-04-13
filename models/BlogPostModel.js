@@ -36,7 +36,6 @@ module.exports = (sequelize) => {
     Attributes,
     {
       timestamps: false,
-      undescored: true,
       tableName: 'BlogPosts',
     });
 
