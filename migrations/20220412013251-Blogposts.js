@@ -23,6 +23,7 @@ module.exports = {
        type: Sequelize.INTEGER, 
        allowNull: false,
        references: { model: 'Users',foreignKey: 'id'},
+       defaultValue: 1,
     },
     published: {
       type: Sequelize.DATE,

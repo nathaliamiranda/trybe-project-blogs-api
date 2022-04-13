@@ -6,11 +6,10 @@ const createLoginController = async (req, res, next) => {
         const { email, password } = req.body;
         
         const user = await loginServiceCreate.createLogin(email, password);
-        console.log(user);
 
         if (user.message) return res.status(400).json({ message: user.message });
 
-        const token = jwtGenerator.singJwt(user.email);
+        const token = jwtGenerator.singJwt({ email: user.email, id: user.id });
 
         return res.status(200).json({ token });
     } catch (err) {

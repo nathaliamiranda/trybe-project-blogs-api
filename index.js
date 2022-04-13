@@ -7,6 +7,7 @@ const errorMiddleware = require('./middlewares/errorMiddleware');
 const user = require('./routes/users');
 const login = require('./routes/login');
 const category = require('./routes/categories');
+const blogpost = require('./routes/blogposts');
 
 const app = express();
 
@@ -17,6 +18,8 @@ app.use('/user', user);
 app.use('/login', login);
 
 app.use('/categories', category);
+
+app.use('/post', blogpost);
 
 app.use(errorMiddleware);
 

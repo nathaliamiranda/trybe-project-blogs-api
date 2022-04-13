@@ -1,7 +1,5 @@
 const jwtGenerator = require('../helpers/jwtGenerator');
 
-const { User } = require('../models');
-
 module.exports = async (req, res, next) => {
   try {
     const token = req.headers.authorization;
@@ -9,13 +7,10 @@ module.exports = async (req, res, next) => {
     if (!token) return res.status(401).json({ message: 'Token not found' });
 
     const decoded = jwtGenerator.verifyJwt(token);
-    const user = await User.findOne({
-      where: { email: decoded.data },
-    });
-
-    if (!user) return res.status(401).json({ message: 'Expired or invalid token' });
-
-    req.user = user;
+   
+    if (!decoded.data) return res.status(401).json({ message: 'Expired or invalid token' });
+    
+    req.user = decoded.data;
 
     next();
   } catch (error) {
