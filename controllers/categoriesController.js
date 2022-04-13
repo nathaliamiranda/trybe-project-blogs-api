@@ -1,5 +1,14 @@
 const CategoryService = require('../services/CategoriesService');
 
+const getAllController = async (_req, res, next) => {
+try {
+    const categories = await CategoryService.getAll();
+    return res.status(200).json(categories);
+} catch (err) {
+    next(err);
+}
+};
+
 const createCategoryController = async (req, res, next) => {
     try {
         const category = await CategoryService.createCategory(req.body);
@@ -12,4 +21,5 @@ const createCategoryController = async (req, res, next) => {
 
 module.exports = {
 createCategoryController,
+getAllController,
 }; 
