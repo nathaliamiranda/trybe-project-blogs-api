@@ -8,6 +8,9 @@ const getAll = async () => {
 
 const getById = async (id) => {
   const user = await User.findByPk(id);
+
+  if (!user) return { notExist: 'User does not exist' };
+
   return user;
 };
   
@@ -15,7 +18,7 @@ const ServiceCreate = async (user) => {
   const validated = await User.findOne({ where: { email: user.email } });
   console.log(validated);
 
-  if (validated) return { message: 'User already registered' };
+  if (validated) return { alreadyExist: 'User already registered' };
 
   const created = await User.create(user);
 

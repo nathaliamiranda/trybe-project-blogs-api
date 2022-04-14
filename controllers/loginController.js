@@ -7,7 +7,7 @@ const createLoginController = async (req, res, next) => {
         
         const user = await loginServiceCreate.createLogin(email, password);
 
-        if (user.message) return res.status(400).json({ message: user.message });
+        if (user.invalidFields) return res.status(400).json({ message: user.invalidFields });
 
         const token = jwtGenerator.singJwt({ email: user.email, id: user.id });
 

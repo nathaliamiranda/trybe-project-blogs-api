@@ -34,7 +34,7 @@ const getPostsById = async (id) => {
     },
     ],
   });
-if (!posts) return { message: 'Post does not exist' };
+if (!posts) return { notExist: 'Post does not exist' };
   return posts;
 };
 
@@ -43,7 +43,7 @@ const result = categoryIds.map(async (id) => Category.findOne({ where: { id } })
   
 const existCategory = await Promise.all(result).then((cat) => cat.every((el) => el !== null));
   
-if (!existCategory) return { message: '"categoryIds" not found' };
+if (!existCategory) return { catNotFound: '"categoryIds" not found' };
   
   const newPost = await BlogPost
   .create({ title, userId, content, published: new Date(), updated: new Date() });
@@ -55,7 +55,7 @@ const updatePost = async ({ title, content }, userId, id) => {
   const post = await BlogPost.findOne({ where: { id } });
   console.log('post:', post);
 
-  if (!post || userId !== post.dataValues.userId) return { message: 'Unauthorized user' };
+  if (!post || userId !== post.dataValues.userId) return { unauthorided: 'Unauthorized user' };
   
   await BlogPost.update({ title, content }, { where: { id } });
 

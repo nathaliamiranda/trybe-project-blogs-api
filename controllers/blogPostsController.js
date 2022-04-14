@@ -16,7 +16,7 @@ const getPostByIdController = async (req, res, next) => {
         
         const postById = await BlogPostService.getPostsById(id);
 
-        if (postById.message) return res.status(404).json({ message: postById.message });
+        if (postById.notExist) return res.status(404).json({ message: postById.notExist });
 
         return res.status(200).json(postById);
     } catch (err) {
@@ -28,7 +28,7 @@ const createPostController = async (req, res, next) => {
     try {
         const post = await BlogPostService.createPost(req.body, req.user.id);
 
-        if (post.message) return res.status(400).json({ message: post.message });
+        if (post.catNotFound) return res.status(400).json({ message: post.catNotFound });
 
         return res.status(201).json(post);
       } catch (err) {
@@ -46,7 +46,7 @@ const updatePostController = async (req, res, next) => {
 
     const post = await BlogPostService.updatePost(req.body, req.user.id, id);
 
-    if (post.message) return res.status(401).json({ message: post.message });
+    if (post.unauthorided) return res.status(401).json({ message: post.unauthorided });
 
     return res.status(200).json(post);
   } catch (err) {
