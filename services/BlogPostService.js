@@ -51,8 +51,33 @@ if (!existCategory) return { message: '"categoryIds" not found' };
   return newPost;
 };
 
+const updatePost = async ({ title, content }, userId, id) => {
+  const post = await BlogPost.findOne({ where: { id } });
+  console.log('post:', post);
+
+  if (!post || userId !== post.dataValues.userId) return { message: 'Unauthorized user' };
+  
+  await BlogPost.update({ title, content }, { where: { id } });
+
+  const postUpdated = await getPostsById(id); 
+  return postUpdated;
+};
+
+const excludePost = async (userId, id) => {
+  const blogPost = await BlogPost.findOne({ where: { id } });
+  
+  if (!blogPost) return { notExist: 'Post does not exist' };
+
+  if (userId !== blogPost.dataValues.userId) return { unauthorided: 'Unauthorized user' };
+
+  const exclude = await BlogPost.destroy({ where: { id } });
+  return exclude;
+};
+
 module.exports = {
     createPost,
     getALlPosts,
     getPostsById,
+    updatePost,
+    excludePost,
 };

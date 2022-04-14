@@ -36,9 +36,46 @@ const createPostController = async (req, res, next) => {
       }
 };
 
+const updatePostController = async (req, res, next) => {
+    try {
+    const { id } = req.params;
+
+    const { categoryIds } = req.body;
+
+    if (categoryIds) return res.status(400).json({ message: 'Categories cannot be edited' });
+
+    const post = await BlogPostService.updatePost(req.body, req.user.id, id);
+
+    if (post.message) return res.status(401).json({ message: post.message });
+
+    return res.status(200).json(post);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const excludePostController = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const excludePost = await BlogPostService.excludePost(req.user.id, id);
+
+        if (excludePost.notExist) return res.status(404).json({ message: excludePost.notExist });
+        if (excludePost.unauthorided) { 
+            return res.status(401).json({ message: excludePost.unauthorided }); 
+        }
+
+        return res.status(204).end();
+    } catch (err) {
+        next(err);
+    }
+};
+
 module.exports = {
     createPostController,
     getAllController,
     getPostByIdController,
+    updatePostController,
+    excludePostController,
 
 };
