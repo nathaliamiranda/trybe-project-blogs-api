@@ -8,8 +8,9 @@ const isValidUser = require('../middlewares/userMiddleware');
 
 const authMiddleware = require('../middlewares/authMiddleware');
 
-router.post('/', isValidUser, UserController.createController);
 router.get('/', authMiddleware, UserController.getAllController);
 router.get('/:id', authMiddleware, UserController.getByIdController);
+router.post('/', isValidUser, UserController.createController);
+router.delete('/me', authMiddleware, UserController.excludeUserController);
 
 module.exports = router;

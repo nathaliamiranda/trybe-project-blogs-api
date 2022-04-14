@@ -38,17 +38,17 @@ const createPostController = async (req, res, next) => {
 
 const updatePostController = async (req, res, next) => {
     try {
-    const { id } = req.params;
+        const { id } = req.params;
 
-    const { categoryIds } = req.body;
+        const { categoryIds } = req.body;
 
-    if (categoryIds) return res.status(400).json({ message: 'Categories cannot be edited' });
+        if (categoryIds) return res.status(400).json({ message: 'Categories cannot be edited' });
 
-    const post = await BlogPostService.updatePost(req.body, req.user.id, id);
+       const post = await BlogPostService.updatePost(req.body, req.user.id, id);
 
-    if (post.unauthorided) return res.status(401).json({ message: post.unauthorided });
+      if (post.unauthorided) return res.status(401).json({ message: post.unauthorided });
 
-    return res.status(200).json(post);
+      return res.status(200).json(post);
   } catch (err) {
     next(err);
   }
@@ -77,5 +77,4 @@ module.exports = {
     getPostByIdController,
     updatePostController,
     excludePostController,
-
 };

@@ -25,8 +25,16 @@ const ServiceCreate = async (user) => {
   return created;
 };
 
+const excludeUser = async (id) => { 
+  const exclude = await User.destroy({ where: { id } });
+  // console.log(exclude);
+
+  return exclude;
+};
+
 module.exports = { 
   ServiceCreate,
   getAll,
   getById,
+  excludeUser,
 };
