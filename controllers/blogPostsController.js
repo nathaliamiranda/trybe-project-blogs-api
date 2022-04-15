@@ -71,10 +71,23 @@ const excludePostController = async (req, res, next) => {
     }
 };
 
+const searchController = async (req, res, next) => {
+    try {
+      const { q } = req.query;
+  
+      const search = await BlogPostService.searchTerm(q);
+  
+      return res.status(200).json(search);
+    } catch (err) {
+     next(err);
+    }
+  };
+
 module.exports = {
     createPostController,
     getAllController,
     getPostByIdController,
     updatePostController,
     excludePostController,
+    searchController,
 };
