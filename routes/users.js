@@ -8,9 +8,9 @@ const isValidUser = require('../middlewares/userMiddleware');
 
 const authMiddleware = require('../middlewares/authMiddleware');
 
-router.get('/', authMiddleware, UserController.getAllController);
-router.get('/:id', authMiddleware, UserController.getByIdController);
-router.post('/', isValidUser, UserController.createController);
-router.delete('/me', authMiddleware, UserController.excludeUserController);
+router.get('/', authMiddleware, UserController.getAllUsers);
+router.get('/:id', authMiddleware, UserController.getByUserId);
+router.post('/', isValidUser, UserController.createUser);
+router.delete('/me', authMiddleware, UserController.deleteUser);
 
 module.exports = router;

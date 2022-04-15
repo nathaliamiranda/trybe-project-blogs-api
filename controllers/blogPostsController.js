@@ -1,8 +1,8 @@
 const BlogPostService = require('../services/BlogPostService');
 
-const getAllController = async (_req, res, next) => {
+const getAllPosts = async (_req, res, next) => {
     try {
-        const getAllBlogPosts = await BlogPostService.getALlPosts();
+        const getAllBlogPosts = await BlogPostService.getAll();
 
         return res.status(200).json(getAllBlogPosts);
     } catch (err) {
@@ -10,7 +10,7 @@ const getAllController = async (_req, res, next) => {
     }
 };
 
-const getPostByIdController = async (req, res, next) => {
+const getPostById = async (req, res, next) => {
     try {
         const { id } = req.params;
         
@@ -24,7 +24,7 @@ const getPostByIdController = async (req, res, next) => {
     }
 };
 
-const createPostController = async (req, res, next) => {
+const createPost = async (req, res, next) => {
     try {
         const post = await BlogPostService.createPost(req.body, req.user.id);
 
@@ -36,7 +36,7 @@ const createPostController = async (req, res, next) => {
       }
 };
 
-const updatePostController = async (req, res, next) => {
+const updatePost = async (req, res, next) => {
     try {
         const { id } = req.params;
 
@@ -54,7 +54,7 @@ const updatePostController = async (req, res, next) => {
   }
 };
 
-const excludePostController = async (req, res, next) => {
+const deletePost = async (req, res, next) => {
     try {
         const { id } = req.params;
 
@@ -71,7 +71,7 @@ const excludePostController = async (req, res, next) => {
     }
 };
 
-const searchController = async (req, res, next) => {
+const searchPost = async (req, res, next) => {
     try {
       const { q } = req.query;
   
@@ -84,10 +84,10 @@ const searchController = async (req, res, next) => {
   };
 
 module.exports = {
-    createPostController,
-    getAllController,
-    getPostByIdController,
-    updatePostController,
-    excludePostController,
-    searchController,
+    createPost,
+    getAllPosts,
+    getPostById,
+    updatePost,
+    deletePost,
+    searchPost,
 };

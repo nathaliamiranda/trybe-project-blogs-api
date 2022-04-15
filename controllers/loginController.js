@@ -1,7 +1,7 @@
 const loginServiceCreate = require('../services/LoginService');
 const jwtGenerator = require('../helpers/jwtGenerator');
 
-const createLoginController = async (req, res, next) => {
+const createLogin = async (req, res, next) => {
     try {
         const { email, password } = req.body;
         
@@ -18,5 +18,5 @@ const createLoginController = async (req, res, next) => {
 };
 
 module.exports = {
-    createLoginController,
+    createLogin,
 };

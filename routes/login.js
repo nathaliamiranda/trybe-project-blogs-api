@@ -6,6 +6,6 @@ const isValidLogin = require('../middlewares/loginMiddleware');
 
 const LoginController = require('../controllers/loginController');
 
-router.post('/', isValidLogin, LoginController.createLoginController);
+router.post('/', isValidLogin, LoginController.createLogin);
 
 module.exports = router;

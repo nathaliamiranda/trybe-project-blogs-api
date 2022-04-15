@@ -2,7 +2,7 @@ const { Op } = require('sequelize');
 
 const { BlogPost, Category, User } = require('../models');
 
-const getALlPosts = async () => {
+const getAll = async () => {
     const posts = await BlogPost.findAll(
       { include: [
         { 
@@ -99,7 +99,7 @@ const searchTerm = async (query) => {
 
 module.exports = {
     createPost,
-    getALlPosts,
+    getAll,
     getPostsById,
     updatePost,
     excludePost,

@@ -14,7 +14,7 @@ const getById = async (id) => {
   return user;
 };
   
-const ServiceCreate = async (user) => {
+const create = async (user) => {
   const validated = await User.findOne({ where: { email: user.email } });
   console.log(validated);
 
@@ -33,7 +33,7 @@ const excludeUser = async (id) => {
 };
 
 module.exports = { 
-  ServiceCreate,
+  create,
   getAll,
   getById,
   excludeUser,

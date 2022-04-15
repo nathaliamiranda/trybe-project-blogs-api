@@ -1,6 +1,6 @@
 const UserService = require('../services/UserService');
 
-const getAllController = async (_req, res, next) => {
+const getAllUsers = async (_req, res, next) => {
   try {
     const result = await UserService.getAll();
   
@@ -10,7 +10,7 @@ const getAllController = async (_req, res, next) => {
   }
 };
 
-const getByIdController = async (req, res, next) => {
+const getByUserId = async (req, res, next) => {
   const { id } = req.params;
   try {
     const user = await UserService.getById(id);
@@ -23,9 +23,9 @@ const getByIdController = async (req, res, next) => {
   }
 };
 
-const createController = async (req, res, next) => {
+const createUser = async (req, res, next) => {
   try {
-    const user = await UserService.ServiceCreate(req.body);
+    const user = await UserService.create(req.body);
 
     if (user.alreadyExist) return res.status(409).json({ message: user.alreadyExist });
 
@@ -35,7 +35,7 @@ const createController = async (req, res, next) => {
   }
 };
 
-const excludeUserController = async (req, res, next) => {
+const deleteUser = async (req, res, next) => {
   try {
     const { id } = req.user;
 
@@ -47,8 +47,8 @@ const excludeUserController = async (req, res, next) => {
 };
 
 module.exports = {
-  createController,
-  getAllController,
-  getByIdController,
-  excludeUserController,
+  createUser,
+  getAllUsers,
+  getByUserId,
+  deleteUser,
 };
