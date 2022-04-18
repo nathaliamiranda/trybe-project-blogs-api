@@ -10,8 +10,8 @@ Projeto desenvolvido no bloco 24 de Back-end!
 
 ## O que foi desenvolvido
 
-Foi desenvolvido uma aplicação em Node.js usando o pacote sequelize para um CRUD de posts. Foi desenvolvido também alguns endpoints (seguindo os princípios do REST) que foram conectados ao banco de dados.
-Para fazer um post é necessário usuário e login, portanto foi trabalhada a relação entre user e post. Também foi feita a utilização de categorias para os posts, assim trabalhando a relação de posts para categorias e de categorias para posts. 
+Foi desenvolvido uma aplicação em Node.js usando o pacote sequelize, criando endpoints (seguindo os princípios do REST) que foram conectados ao banco de dados para fazer o CRUD.
+Para realizar um post é necessário usuário e login, portanto foi trabalhada a relação entre user e post. Também foi feita a utilização de categorias para os posts, assim trabalhando a relação de posts para categorias e de categorias para posts. 
 As seeders foram feitas pela trybe.
 
 ## Como executar o projeto
