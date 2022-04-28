@@ -1,5 +1,5 @@
 # Projeto Blogs Api!
-Projeto desenvolvido no bloco 24 de Back-end!
+Sexto projeto desenvolvido no bloco 24 de Back-end!
 
 
 ## Habilidades
