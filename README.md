@@ -1,12 +1,12 @@
 # Projeto Blogs Api!
-Sexto projeto desenvolvido no bloco 24 de Back-end!
+Projeto desenvolvido no bloco 24 de Back-end!
 
 
 ## Habilidades
-- Construção de um back-end usando ORM com o pacote sequelize do npm.
-- Criação e associação de tabelas usando models e migrations do sequelize.
-- Construção de endpoints para consumir os models que foram criadas.
-- Desenvolvimento do CRUD com o ORM.
+- Construção de um back-end usando ORM com o pacote sequelize do npm;
+- Criação e associação de tabelas usando models e migrations do sequelize;
+- Construção de endpoints para consumir os models que foram criadas;
+- Desenvolvimento do CRUD com o ORM;
 
 ## O que foi desenvolvido
 
@@ -15,6 +15,6 @@ Para realizar um post é necessário usuário e login, portanto foi trabalhada a
 As seeders foram feitas pela trybe.
 
 ## Como executar o projeto
-- Execute o npm install para instalar as dependencias. 
-- Utilize uma ferramenta para a execução de testes das requisições feitas pela API, como o Postman ou o Insomnia.
+- Execute o npm install para instalar as dependencias;
+- Utilize uma ferramenta para a execução de testes das requisições feitas pela API, como o Postman ou o Insomnia;
 
